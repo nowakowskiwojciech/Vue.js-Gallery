@@ -35,9 +35,9 @@
         top2: "50%;",
         opa: "1",
         category: {
-          music: ['m1', 'm2', 'm3', 'm4', 'm5'],
+          music: ['m1', 'm2', 'm3', 'm4', 'm5','m6','m7','m8'],
           abstract: ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'],
-          animals: [1, 2, 3, 4, 5, 6, 7, 8]
+          animals: ['an1', 'an2', 'an3', 'an4', 'an5', 'an6', 'an7', 'an8']
         },
         showx: {
           music: false,
