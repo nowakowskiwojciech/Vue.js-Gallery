@@ -4,7 +4,7 @@
       <h1 v-for="album in albums" :key="album" class='text' @click="currentAlbum = album, textTop = '-20%', textOpacity = '0'">{{album}}</h1>
     </div>
   
-    <div>
+    <div class='back'>
       <transition name="fade">
         <span class='text' v-if="currentAlbum != null" @click="currentAlbum = null, textTop='50%', textOpacity='1'">back</span>
       </transition>

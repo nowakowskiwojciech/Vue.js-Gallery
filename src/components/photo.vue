@@ -56,5 +56,6 @@
     top: 0;
     bottom: 0;
     z-index: 1000;
+    cursor:pointer;
   }
 </style>
