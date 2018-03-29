@@ -13,6 +13,10 @@
 
 <script>
   import photo from '../components/photo'
+
+  var moveInterval = null;
+  var accelarateInterval = null;
+  var brakeInterval = null;
   
   export default {
     props: ['photos'],
@@ -36,20 +40,20 @@
         var that = this;
   
         if (this.oneIntervalStart == true) {
-          window.var = setInterval(function() {
+          moveInterval = setInterval(function() {
             that.elX += that.speed;
             that.elPos = that.elX + 'px'
           }, 20);
-          window.el = setInterval(function() {
+          accelarateInterval = setInterval(function() {
             if (value == 'right') {
               that.speed += that.friction;
               if (that.speed >= that.maxSpeed) {
-                clearInterval(window.el);
+                clearInterval(accelarateInterval);
               }
             } else {
               that.speed -= that.friction;
               if (that.speed <= -that.maxSpeed) {
-                clearInterval(window.el);
+                clearInterval(accelarateInterval);
               }
   
             }
@@ -58,26 +62,26 @@
         }
       },
       stopAnimation(value) {
-        clearInterval(window.el);
+        clearInterval(accelarateInterval);
   
         var that = this;
         if (this.oneIntervalStop == true) {
-          window.slizg = setInterval(function() {
+          interwal3 = setInterval(function() {
             if(value == 'right'){
               that.speed -= that.friction
               if (that.speed <= 0) {
-                clearInterval(window.var);
+                clearInterval(moveInterval);
                 that.oneIntervalStart = true;
-                clearInterval(window.slizg);
+                clearInterval(brakeInterval);
                 that.oneIntervalStop = true;
                 that.speed = 0;
               }
             } else {
               that.speed += that.friction
               if (that.speed >= 0) {
-                clearInterval(window.var);
+                clearInterval(moveInterval);
                 that.oneIntervalStart = true;
-                clearInterval(window.slizg);
+                clearInterval(brakeInterval);
                 that.oneIntervalStop = true;
                 that.speed = 0;
               }
