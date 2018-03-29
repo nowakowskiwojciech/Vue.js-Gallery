@@ -26,7 +26,7 @@
         elX: 0,
         speed: 0,
         friction: 0.2,
-        maxSpeed:8,
+        maxSpeed: 8,
         oneIntervalStart: true,
         oneIntervalStop: true
       }
@@ -34,14 +34,14 @@
     methods: {
       startAnimation(value) {
         var that = this;
-
+  
         if (this.oneIntervalStart == true) {
           window.var = setInterval(function() {
-              that.elX += that.speed;
-              that.elPos = that.elX + 'px'
-            }, 20);
+            that.elX += that.speed;
+            that.elPos = that.elX + 'px'
+          }, 20);
           window.el = setInterval(function() {
-            if(value == 'right'){
+            if (value == 'right') {
               that.speed += that.friction;
               if (that.speed >= that.maxSpeed) {
                 clearInterval(window.el);
@@ -51,7 +51,7 @@
               if (that.speed <= -that.maxSpeed) {
                 clearInterval(window.el);
               }
-
+  
             }
           }, 30)
           this.oneIntervalStart = false;
@@ -104,8 +104,9 @@
     margin: 20px;
     cursor: pointer;
   }
-  .center-arrow{
-    display:flex; 
-    justify-content:center;
+  
+  .center-arrow {
+    display: flex;
+    justify-content: center;
   }
 </style>

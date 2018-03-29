@@ -1,10 +1,10 @@
 <template>
   <span>
-        <img @click="toggleImage(true)" class="base" :src="imagePath(url)" :style="{left: elPosX}">
-        <transition  name="fade" >
-          <img  @click="toggleImage(false)" v-if="opened" class="big" :src="imagePath(url)">
-        </transition>
-      </span>
+          <img @click="toggleImage(true)" class="base" :src="imagePath(url)" :style="{left: elPosX}">
+          <transition  name="fade" >
+            <img  @click="toggleImage(false)" v-if="openedImage" class="big" :src="imagePath(url)">
+          </transition>
+        </span>
 </template>
 
 <script>
@@ -12,7 +12,7 @@
     props: ['url', 'elPosX'],
     data() {
       return {
-        opened: false
+        openedImage: false
       }
     },
     methods: {
@@ -20,7 +20,7 @@
         return require('../assets/' + url + '.jpg')
       },
       toggleImage(value) {
-        this.opened = value
+        this.openedImage = value
       }
     }
   }

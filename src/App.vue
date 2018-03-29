@@ -1,12 +1,12 @@
 <template>
   <div id="app" class="container">
-    <div class='srodek' :style="{top: textTop, opacity: textOpacity}">
-      <h1 v-for="album in albums" :key="album" class='cat' @click="currentAlbum = album, textTop = '-20%', textOpacity = '0'">{{album}}</h1>
+    <div class='albums-center' :style="{top: textTop, opacity: textOpacity}">
+      <h1 v-for="album in albums" :key="album" class='text' @click="currentAlbum = album, textTop = '-20%', textOpacity = '0'">{{album}}</h1>
     </div>
   
-    <div style="text-align:left; margin-top:50px;">
+    <div>
       <transition name="fade">
-        <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, textTop='50%', textOpacity='1'" align="left">back</span>
+        <span class='text' v-if="currentAlbum != null" @click="currentAlbum = null, textTop='50%', textOpacity='1'">back</span>
       </transition>
     </div>
   
@@ -33,7 +33,7 @@
           abstract: ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'],
           animals: ['an1', 'an2', 'an3', 'an4', 'an5', 'an6', 'an7', 'an8'],
           nature: ['n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8']
-
+  
         },
         albums: ['abstract', 'music', 'animals', 'nature'],
         currentAlbum: null
@@ -63,10 +63,9 @@
   body {
     background-color: black;
     overflow: hidden
-
   }
   
-  .srodek {
+  .albums-center {
     transition: top 2s, opacity 2s;
     margin: 0;
     position: absolute;
@@ -76,13 +75,13 @@
     transform: translate(-50%, -50%)
   }
   
-  .cat {
+  .text {
     position: relative;
     transition: font-size 1s;
     cursor: pointer;
   }
   
-  .cat:hover {
+  .text:hover {
     font-size: 80px;
   }
   
@@ -101,5 +100,10 @@
   {
     transform: translateX(500px);
     opacity: 0;
+  }
+  
+  .back {
+    text-align: left;
+    margin-top: 50px;
   }
 </style>
