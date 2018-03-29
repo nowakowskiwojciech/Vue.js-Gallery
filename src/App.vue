@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <div  class='srodek' :style="{top: top2, opacity: opa}">
+    <div class='srodek' :style="{top: top2, opacity: opa}">
       <h1 v-for="album in albums" :key="album" class='cat' @click="currentAlbum = album, top2 = '-20%', opa = '0'">{{album}}</h1>
     </div>
   
@@ -9,8 +9,8 @@
         <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, top2='50%', opa='1'" align="left">Back</span>
       </transition>
     </div>
-
-    <transition name="fade">
+  
+    <transition name="slide-fade">
       <category v-if="album = currentAlbum" :v-for="album in albums" :photos="photoNames[currentAlbum]" />
     </transition>
   </div>
@@ -38,8 +38,7 @@
   
       }
     },
-    methods: {
-    },
+    methods: {},
     created() {
       var that = this;
       setTimeout(function() {
@@ -81,5 +80,22 @@
   
   .cat:hover {
     font-size: 80px;
+  }
+  
+  .slide-fade-enter-active {
+    transition: all 2s ease;
+  }
+  
+  .slide-fade-leave-active {
+    transition: all 2s ease;
+  }
+  
+  .slide-fade-enter,
+  .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */
+  
+  {
+    transform: translateX(500px);
+    opacity: 0;
   }
 </style>
