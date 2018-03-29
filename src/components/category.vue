@@ -5,8 +5,8 @@
       </photo>
     </div>
     <div style='display:flex; justify-content:center;'>
-      <img src="../assets/arrow-l.png" class='arrow' @mouseover="startAnimation" @mouseleave="stopAnimation">
-      <img src="../assets/arrow-r.png" class='arrow' @mouseover="startAnimation" @mouseleave="stopAnimation">
+      <img src="../assets/arrow-l.png" class='arrow' @mouseover="startAnimation('left')" @mouseleave="stopAnimation('left')">
+      <img src="../assets/arrow-r.png" class='arrow' @mouseover="startAnimation('right')" @mouseleave="stopAnimation('right')">
     </div>
   </div>
 </template>
@@ -25,35 +25,45 @@
         elPos: 0,
         elX: 0,
         speed: 0,
+        friction: 0.2,
+        maxSpeed:8,
         oneIntervalStart: true,
         oneIntervalStop: true
       }
     },
     methods: {
-      moveEl() {
-        this.elX += this.speed;
-        this.elPos = this.elX + 'px'
-      },
-      startAnimation() {
+      startAnimation(value) {
+        var that = this;
+
         if (this.oneIntervalStart == true) {
-          window.var = setInterval(this.moveEl, 20);
-          var that = this;
+          window.var = setInterval(function() {
+              that.elX += that.speed;
+              that.elPos = that.elX + 'px'
+            }, 20);
           window.el = setInterval(function() {
-            that.speed += 0.2;
-            if (that.speed >= 8) {
-              clearInterval(window.el);
+            if(value == 'right'){
+              that.speed += that.friction;
+              if (that.speed >= that.maxSpeed) {
+                clearInterval(window.el);
+              }
+            } else {
+              that.speed -= that.friction;
+              if (that.speed <= -that.maxSpeed) {
+                clearInterval(window.el);
+              }
+
             }
           }, 30)
           this.oneIntervalStart = false;
         }
       },
-      stopAnimation() {
+      stopAnimation(value) {
         clearInterval(window.el);
   
         var that = this;
         if (this.oneIntervalStop == true) {
           window.slizg = setInterval(function() {
-            that.speed -= 0.2
+            that.speed -= that.friction
             if (that.speed <= 0) {
               clearInterval(window.var);
               that.oneIntervalStart = true;
@@ -72,7 +82,7 @@
 <style>
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 1.5s;
+    transition: opacity 2s;
   }
   
   .fade-enter,
@@ -87,7 +97,6 @@
     white-space: nowrap;
     max-width: 100%;
   }
-  
   
   .arrow {
     width: auto;
