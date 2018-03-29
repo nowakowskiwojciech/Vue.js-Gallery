@@ -5,8 +5,8 @@
       </photo>
     </div>
     <div class='center-arrow'>
-      <img src="../assets/arrow-l.png" class='arrow' @mouseover="startAnimation('left')" @mouseleave="stopAnimation('left')">
-      <img src="../assets/arrow-r.png" class='arrow' @mouseover="startAnimation('right')" @mouseleave="stopAnimation('right')">
+      <img src="../assets/arrow-l.png" class='arrow' @mouseover="startAnimation('right')" @mouseleave="stopAnimation('right')">
+      <img src="../assets/arrow-r.png" class='arrow' @mouseover="startAnimation('left')" @mouseleave="stopAnimation('left')">
     </div>
   </div>
 </template>
