@@ -1,26 +1,19 @@
 <template>
   <div id="app" class="container">
     <div class='srodek' :style="{top: top2, opacity: opa}">
-      <h1 class='cat' @click="showx.abstract=true, top2 = '-20%', opa = '0'">Abstraction</h1>
-      <h1 class='cat' @click="showx.music=true, top2 = '-20%', opa = '0' ">Music</h1>
-      <h1 class='cat' @click="showx.animals=true, top2 = '-20%', opa = '0' ">Animals</h1>
-      <h1 class='cat' @click="showx.nature=true, top2 = '-20%', opa = '0' ">Nature</h1>
+      <h1 class='cat' @click="currentAlbum = 'abstract', top2 = '-20%', opa = '0'">Abstraction</h1>
+      <h1 class='cat' @click="currentAlbum = 'music', top2 = '-20%', opa = '0' ">Music</h1>
+      <h1 class='cat' @click="currentAlbum = 'animals', top2 = '-20%', opa = '0' ">Animals</h1>
+      <h1 class='cat' @click="currentAlbum = 'nature', top2 = '-20%', opa = '0' ">Nature</h1>
     </div>
         <div  style="text-align:left; margin-top:50px;" >
           <transition name="fade">
-          <span class='cat' style='cursor:pointer' v-if="showx.abstract || showx.music || showx.animals" @click="hideCategory" align="left">Back</span>
+          <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, top2='50%', opa='1'" align="left">Back</span>
           </transition>
         </div>
-    
-      <transition name="fade">
-        <category v-if="showx.abstract" :photos="category.abstract" />
-      </transition>
-      <transition name="fade">
-        <category v-if="showx.music" :photos="category.music" />
-      </transition>
-      <transition name="fade">
-        <category v-if="showx.animals" :photos="category.animals" />
-      </transition>
+        <transition name="fade">
+          <category v-if="album = currentAlbum" :v-for="album in albums" :photos="photoNames[currentAlbum]" />
+        </transition>
   </div>
 </template>
 
@@ -36,16 +29,13 @@
       return {
         top2: "-20%",
         opa: "1",
-        category: {
+        photoNames: {
           music: ['m1', 'm2', 'm3', 'm4', 'm5','m6','m7','m8'],
           abstract: ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'],
           animals: ['an1', 'an2', 'an3', 'an4', 'an5', 'an6', 'an7', 'an8']
         },
-        showx: {
-          music: false,
-          abstract: false,
-          animals: false
-        }
+        albums: ['abstract','music','animals','nature'],
+        currentAlbum: null
   
       }
     },
