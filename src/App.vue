@@ -59,7 +59,9 @@
   }
   
   body {
-    background-color: black
+    background-color: black;
+    overflow: hidden
+
   }
   
   .srodek {
