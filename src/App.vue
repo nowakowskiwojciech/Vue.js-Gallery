@@ -6,10 +6,14 @@
         <h1 class='cat' @click="showx.animals=true, top2 = '-20%', opa = '0' ">Animals</h1>
         <h1 class='cat' @click="showx.nature=true, top2 = '-20%', opa = '0' ">Nature</h1>
       </div>
-      <category :show="showx.abstract" :photos="category.abstract"/>
-      <category :show="showx.music" :photos="category.music"/>
-      <category :show="showx.animals" :photos="category.animals"/>
-      
+        <transition class='row' name="fade" >
+          <h1 v-if="showx.abstract" @click="showx.abstract=false" align="left">Back</h1>
+        </transition>
+      <transition  name="fade" >
+        <category v-if="showx.abstract" :photos="category.abstract"/>
+      </transition>
+        <category v-if="showx.music" :photos="category.music"/>
+        <category v-if="showx.animals" :photos="category.animals"/>
   </div>
 </template>
 

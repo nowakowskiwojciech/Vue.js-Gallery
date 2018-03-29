@@ -1,25 +1,12 @@
 <template>
     <div>
-        <div>
-            <div class='row'>
-                <transition  name="fade" >
-                  <h1 v-if="show" @click="hide" align="left">Back</h1>
-                </transition>
-            </div>
-        </div>
-        <div class='display row'  >
-          <transition-group name="fade">
-              <photo v-if="show" v-for="photo in photos" :styl ="shift" :url="photo" :key="photo">
+        <div class='display'  >
+              <photo v-for="photo in photos" :styl ="shift" :url="photo" :key="photo">
               </photo>
-          </transition-group>
         </div>
           <div style='display:flex; justify-content:center;'>
-          <transition name="fade">
-            <span v-if="show" style='margin:20px; cursor:pointer; font-weight:bold' @mouseover="startAnimate" @mouseleave="stop"><-</span>
-          </transition>
-          <transition name="fade">
-            <span v-if="show"  style='margin:20px; cursor:pointer; font-weight:bold' @mouseover="startAnimate" @mouseleave="stop">-></span>
-          </transition>
+            <span style='margin:20px; cursor:pointer; font-weight:bold' @mouseover="startAnimate" @mouseleave="stop"><-</span>
+            <span style='margin:20px; cursor:pointer; font-weight:bold' @mouseover="startAnimate" @mouseleave="stop">-></span>
           </div>
     </div>
 </template>
@@ -43,13 +30,6 @@ export default {
       can2:true   }
   },
   methods: {
-    display () {
-      this.show = true
-      
-    },
-    hide () {
-      this.show = false
-    },
     moveEl(){
       this.x+=this.friction;
       this.shift = this.x+'px'
