@@ -1,19 +1,18 @@
 <template>
   <div id="app" class="container">
-    <div class='srodek' :style="{top: top2, opacity: opa}">
-      <h1 class='cat' @click="currentAlbum = 'abstract', top2 = '-20%', opa = '0'">Abstraction</h1>
-      <h1 class='cat' @click="currentAlbum = 'music', top2 = '-20%', opa = '0' ">Music</h1>
-      <h1 class='cat' @click="currentAlbum = 'animals', top2 = '-20%', opa = '0' ">Animals</h1>
-      <h1 class='cat' @click="currentAlbum = 'nature', top2 = '-20%', opa = '0' ">Nature</h1>
+    <div  class='srodek' :style="{top: top2, opacity: opa}">
+      <h1 v-for="album in albums" :key="album" class='cat' @click="currentAlbum = album, top2 = '-20%', opa = '0'">{{album}}</h1>
     </div>
-        <div  style="text-align:left; margin-top:50px;" >
-          <transition name="fade">
-          <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, top2='50%', opa='1'" align="left">Back</span>
-          </transition>
-        </div>
-        <transition name="fade">
-          <category v-if="album = currentAlbum" :v-for="album in albums" :photos="photoNames[currentAlbum]" />
-        </transition>
+  
+    <div style="text-align:left; margin-top:50px;">
+      <transition name="fade">
+        <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, top2='50%', opa='1'" align="left">Back</span>
+      </transition>
+    </div>
+
+    <transition name="fade">
+      <category v-if="album = currentAlbum" :v-for="album in albums" :photos="photoNames[currentAlbum]" />
+    </transition>
   </div>
 </template>
 
@@ -30,29 +29,23 @@
         top2: "-20%",
         opa: "1",
         photoNames: {
-          music: ['m1', 'm2', 'm3', 'm4', 'm5','m6','m7','m8'],
+          music: ['m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8'],
           abstract: ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'],
           animals: ['an1', 'an2', 'an3', 'an4', 'an5', 'an6', 'an7', 'an8']
         },
-        albums: ['abstract','music','animals','nature'],
+        albums: ['abstract', 'music', 'animals', 'nature'],
         currentAlbum: null
   
       }
     },
     methods: {
-      hideCategory(){
-        this.showx.abstract=false;
-        this.showx.music=false;
-        this.showx.animals=false;
-        this.top2='50%';
-        this.opa='1' 
-      }
-
-    },created(){
+  
+    },
+    created() {
       var that = this;
-      setTimeout(function(){
-        that.top2 ="50%"
-      },500);
+      setTimeout(function() {
+        that.top2 = "50%"
+      }, 500);
     }
   }
 </script>
@@ -90,6 +83,4 @@
   .cat:hover {
     font-size: 80px;
   }
-
-
 </style>
