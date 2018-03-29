@@ -63,13 +63,25 @@
         var that = this;
         if (this.oneIntervalStop == true) {
           window.slizg = setInterval(function() {
-            that.speed -= that.friction
-            if (that.speed <= 0) {
-              clearInterval(window.var);
-              that.oneIntervalStart = true;
-              clearInterval(window.slizg);
-              that.oneIntervalStop = true;
-              that.speed = 0;
+            if(value == 'right'){
+              that.speed -= that.friction
+              if (that.speed <= 0) {
+                clearInterval(window.var);
+                that.oneIntervalStart = true;
+                clearInterval(window.slizg);
+                that.oneIntervalStop = true;
+                that.speed = 0;
+              }
+            } else {
+              that.speed += that.friction
+              if (that.speed >= 0) {
+                clearInterval(window.var);
+                that.oneIntervalStart = true;
+                clearInterval(window.slizg);
+                that.oneIntervalStop = true;
+                that.speed = 0;
+              }
+
             }
           }, 30)
         }
