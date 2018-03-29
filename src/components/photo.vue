@@ -1,15 +1,15 @@
 <template>
   <span>
-        <img @click="open" class="base" :src="imagePath(url)" :style="{left: styl}">
+        <img @click="toggleImage(true)" class="base" :src="imagePath(url)" :style="{left: elPosX}">
         <transition  name="fade" >
-          <img  @click="close" v-if="opened" class="big" :src="imagePath(url)">
+          <img  @click="toggleImage(false)" v-if="opened" class="big" :src="imagePath(url)">
         </transition>
       </span>
 </template>
 
 <script>
   export default {
-    props: ['url', 'styl'],
+    props: ['url', 'elPosX'],
     data() {
       return {
         opened: false
@@ -19,11 +19,8 @@
       imagePath(url) {
         return require('../assets/' + url + '.jpg')
       },
-      open() {
-        this.opened = true
-      },
-      close() {
-        this.opened = false
+      toggleImage(value) {
+        this.opened = value
       }
     }
   }

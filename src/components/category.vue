@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class='display'>
-      <photo v-for="photo in photos" :styl="elPos" :url="photo" :key="photo">
+      <photo v-for="photo in photos" :elPosX="elPos" :url="photo" :key="photo">
       </photo>
     </div>
     <div style='display:flex; justify-content:center;'>

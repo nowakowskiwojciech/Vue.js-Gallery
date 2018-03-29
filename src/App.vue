@@ -1,12 +1,12 @@
 <template>
   <div id="app" class="container">
-    <div class='srodek' :style="{top: top2, opacity: opa}">
-      <h1 v-for="album in albums" :key="album" class='cat' @click="currentAlbum = album, top2 = '-20%', opa = '0'">{{album}}</h1>
+    <div class='srodek' :style="{top: textTop, opacity: textOpacity}">
+      <h1 v-for="album in albums" :key="album" class='cat' @click="currentAlbum = album, textTop = '-20%', textOpacity = '0'">{{album}}</h1>
     </div>
   
     <div style="text-align:left; margin-top:50px;">
       <transition name="fade">
-        <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, top2='50%', opa='1'" align="left">back</span>
+        <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, textTop='50%', textOpacity='1'" align="left">back</span>
       </transition>
     </div>
   
@@ -26,12 +26,14 @@
     data() {
   
       return {
-        top2: "-20%",
-        opa: "1",
+        textTop: "-20%",
+        textOpacity: "1",
         photoNames: {
           music: ['m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8'],
           abstract: ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8'],
-          animals: ['an1', 'an2', 'an3', 'an4', 'an5', 'an6', 'an7', 'an8']
+          animals: ['an1', 'an2', 'an3', 'an4', 'an5', 'an6', 'an7', 'an8'],
+          nature: ['n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8']
+
         },
         albums: ['abstract', 'music', 'animals', 'nature'],
         currentAlbum: null
@@ -42,7 +44,7 @@
     created() {
       var that = this;
       setTimeout(function() {
-        that.top2 = "50%"
+        that.textTop = "50%"
       }, 500);
     }
   }
@@ -76,7 +78,7 @@
   
   .cat {
     position: relative;
-    transition: font-size 2s;
+    transition: font-size 1s;
     cursor: pointer;
   }
   
