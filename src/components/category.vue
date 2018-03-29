@@ -35,7 +35,6 @@ export default {
   },
   data () {
     return {
-      photos: [1, 2, 3, 4],
       shift: 0,
       mouseX:0,
       x:0,
