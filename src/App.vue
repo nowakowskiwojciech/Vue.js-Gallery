@@ -6,19 +6,21 @@
       <h1 class='cat' @click="showx.animals=true, top2 = '-20%', opa = '0' ">Animals</h1>
       <h1 class='cat' @click="showx.nature=true, top2 = '-20%', opa = '0' ">Nature</h1>
     </div>
-    <transition class='row' name="fade">
-      <h1 v-if="showx.abstract || showx.music || showx.animals" @click="showx.abstract=false, showx.music=false, showx.animals=false, top2='50%', opa='1' " align="left">Back</h1>
-    </transition>
-  
-    <transition name="fade">
-      <category v-if="showx.abstract" :photos="category.abstract" />
-    </transition>
-    <transition name="fade">
-      <category v-if="showx.music" :photos="category.music" />
-    </transition>
-    <transition name="fade">
-      <category v-if="showx.animals" :photos="category.animals" />
-    </transition>
+        <div  style="text-align:left; margin-top:50px;" >
+          <transition name="fade">
+          <span class='cat' style='cursor:pointer' v-if="showx.abstract || showx.music || showx.animals" @click="showx.abstract=false, showx.music=false, showx.animals=false, top2='50%', opa='1' " align="left">Back</span>
+          </transition>
+        </div>
+    
+      <transition name="fade">
+        <category v-if="showx.abstract" :photos="category.abstract" />
+      </transition>
+      <transition name="fade">
+        <category v-if="showx.music" :photos="category.music" />
+      </transition>
+      <transition name="fade">
+        <category v-if="showx.animals" :photos="category.animals" />
+      </transition>
   </div>
 </template>
 
@@ -54,7 +56,6 @@
         return value
   
       }
-  
     }
   }
 </script>
@@ -92,4 +93,6 @@
   .cat:hover {
     font-size: 80px;
   }
+
+
 </style>
