@@ -4,7 +4,7 @@
       <photo v-for="photo in photos" :elPosX="elPos" :url="photo" :key="photo">
       </photo>
     </div>
-    <div style='display:flex; justify-content:center;'>
+    <div class='center-arrow'>
       <img src="../assets/arrow-l.png" class='arrow' @mouseover="startAnimation('left')" @mouseleave="stopAnimation('left')">
       <img src="../assets/arrow-r.png" class='arrow' @mouseover="startAnimation('right')" @mouseleave="stopAnimation('right')">
     </div>
@@ -103,5 +103,9 @@
     height: 70px;
     margin: 20px;
     cursor: pointer;
+  }
+  .center-arrow{
+    display:flex; 
+    justify-content:center;
   }
 </style>
