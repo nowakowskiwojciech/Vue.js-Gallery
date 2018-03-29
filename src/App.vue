@@ -39,7 +39,6 @@
       }
     },
     methods: {
-  
     },
     created() {
       var that = this;
