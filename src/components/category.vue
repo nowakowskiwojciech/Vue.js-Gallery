@@ -13,7 +13,6 @@
 
 <script>
   import photo from '../components/photo'
-
   var moveInterval = null;
   var accelarateInterval = null;
   var brakeInterval = null;
@@ -36,13 +35,30 @@
       }
     },
     methods: {
+      getWidth() {
+        var elWidth = 150;
+        $(".base").each(function() {
+          elWidth += $(this).outerWidth();
+        });
+        return elWidth;
+      },
       startAnimation(value) {
         var that = this;
+        var width2 = this.getWidth() - screen.width;
+        console.log(width2);
   
         if (this.oneIntervalStart == true) {
           moveInterval = setInterval(function() {
+  
+            if ((that.elX < -width2) && value == 'left') {
+              that.stopAnimation('left');
+            }
+            if ((that.elX >= -200) && value == 'right') {
+              that.stopAnimation('right');
+            }
             that.elX += that.speed;
             that.elPos = that.elX + 'px'
+  
           }, 20);
           accelarateInterval = setInterval(function() {
             if (value == 'right') {
@@ -67,7 +83,7 @@
         var that = this;
         if (this.oneIntervalStop == true) {
           brakeInterval = setInterval(function() {
-            if(value == 'right'){
+            if (value == 'right') {
               that.speed -= that.friction
               if (that.speed <= 0) {
                 clearInterval(moveInterval);
@@ -75,6 +91,7 @@
                 clearInterval(brakeInterval);
                 that.oneIntervalStop = true;
                 that.speed = 0;
+  
               }
             } else {
               that.speed += that.friction
@@ -84,8 +101,9 @@
                 clearInterval(brakeInterval);
                 that.oneIntervalStop = true;
                 that.speed = 0;
+  
               }
-
+  
             }
           }, 30)
         }
