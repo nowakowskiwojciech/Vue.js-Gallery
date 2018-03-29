@@ -5,8 +5,8 @@
       </photo>
     </div>
     <div style='display:flex; justify-content:center;'>
-      <span style='margin:20px; cursor:pointer; font-weight:bold' @mouseover="startAnimate" @mouseleave="stop"><-</span>
-      <span style='margin:20px; cursor:pointer; font-weight:bold' @mouseover="startAnimate" @mouseleave="stop">-></span>
+      <img src="../assets/arrow-l.png" style='width:auto; height:70px; margin:20px; cursor:pointer;' @mouseover="startAnimate" @mouseleave="stop">
+      <img src="../assets/arrow-r.png" style='width:auto; height:70px; margin:20px; cursor:pointer;' @mouseover="startAnimate" @mouseleave="stop">
     </div>
   </div>
 </template>

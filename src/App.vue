@@ -8,7 +8,7 @@
     </div>
         <div  style="text-align:left; margin-top:50px;" >
           <transition name="fade">
-          <span class='cat' style='cursor:pointer' v-if="showx.abstract || showx.music || showx.animals" @click="showx.abstract=false, showx.music=false, showx.animals=false, top2='50%', opa='1' " align="left">Back</span>
+          <span class='cat' style='cursor:pointer' v-if="showx.abstract || showx.music || showx.animals" @click="hideCategory" align="left">Back</span>
           </transition>
         </div>
     
@@ -34,7 +34,7 @@
     data() {
   
       return {
-        top2: "50%;",
+        top2: "-20%",
         opa: "1",
         category: {
           music: ['m1', 'm2', 'm3', 'm4', 'm5','m6','m7','m8'],
@@ -49,13 +49,20 @@
   
       }
     },
-    methods: {},
-    computed: {
-      showCategory(value) {
-  
-        return value
-  
+    methods: {
+      hideCategory(){
+        this.showx.abstract=false;
+        this.showx.music=false;
+        this.showx.animals=false;
+        this.top2='50%';
+        this.opa='1' 
       }
+
+    },created(){
+      var that = this;
+      setTimeout(function(){
+        that.top2 ="50%"
+      },500);
     }
   }
 </script>
