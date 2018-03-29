@@ -133,10 +133,16 @@
   }
   
   .arrow {
+    transition: all 1s;
     width: auto;
     height: 70px;
     margin: 20px;
     cursor: pointer;
+  }
+
+  .arrow:hover {
+    height:100px;
+
   }
   
   .center-arrow {
