@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class='display'>
-      <photo v-for="photo in photos" :styl="shift" :url="photo" :key="photo">
+      <photo v-for="photo in photos" :styl="elPos" :url="photo" :key="photo">
       </photo>
     </div>
     <div style='display:flex; justify-content:center;'>
@@ -22,26 +22,25 @@
     },
     data() {
       return {
-        shift: 0,
-        mouseX: 0,
-        x: 0,
-        friction: 0,
+        elPos: 0,
+        elX: 0,
+        speed: 0,
         can: true,
         can2: true
       }
     },
     methods: {
       moveEl() {
-        this.x += this.friction;
-        this.shift = this.x + 'px'
+        this.elX += this.speed;
+        this.elPos = this.x + 'px'
       },
       startAnimate() {
         if (this.can == true) {
           window.var = setInterval(this.moveEl, 20);
           var that = this;
           window.el = setInterval(function() {
-            that.friction += 0.2;
-            if (that.friction >= 8) {
+            that.speed += 0.2;
+            if (that.speed >= 8) {
               clearInterval(window.el);
             }
           }, 30)
@@ -54,13 +53,13 @@
         var that = this;
         if (this.can2 == true) {
           window.slizg = setInterval(function() {
-            that.friction -= 0.2
-            if (that.friction <= 0) {
+            that.speed -= 0.2
+            if (that.speed <= 0) {
               clearInterval(window.var);
               that.can = true;
               clearInterval(window.slizg);
               that.can2 = true;
-              that.friction = 0;
+              that.speed = 0;
             }
           }, 30)
         }

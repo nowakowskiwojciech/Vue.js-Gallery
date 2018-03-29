@@ -6,7 +6,7 @@
   
     <div style="text-align:left; margin-top:50px;">
       <transition name="fade">
-        <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, top2='50%', opa='1'" align="left">Back</span>
+        <span class='cat' v-if="currentAlbum != null" style='cursor:pointer' @click="currentAlbum = null, top2='50%', opa='1'" align="left">back</span>
       </transition>
     </div>
   
