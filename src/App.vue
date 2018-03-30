@@ -1,12 +1,12 @@
 <template>
   <div id="app" class="container">
     <div class='albums-center' :style="{top: textTop, opacity: textOpacity}">
-      <h1 v-for="album in albums" :key="album" class='text' @click="currentAlbum = album, textTop = '-20%', textOpacity = '0'">{{album}}</h1>
+      <h1 v-for="album in albums" :key="album" class='text' @click="currentAlbum = album, backLeft='0%', backOpacity='1', textTop = '-20%', textOpacity = '0'">{{album}}</h1>
     </div>
   
     <div class='back'>
       <transition name="fade">
-        <span class='text' v-if="currentAlbum != null" @click="currentAlbum = null, textTop='50%', textOpacity='1'">back</span>
+        <span :style="{left: backLeft, opacity: backOpacity }" class='text' @click="currentAlbum = null, backLeft='-20%', backOpacity='0',  textTop='50%', textOpacity='1'">back</span>
       </transition>
     </div>
   
@@ -26,6 +26,8 @@
     data() {
   
       return {
+        backOpacity: "0",
+        backLeft: "-20%",
         textTop: "-20%",
         textOpacity: "1",
         photoNames: {
@@ -77,7 +79,7 @@
   
   .text {
     position: relative;
-    transition: font-size 1s;
+    transition: all 1s;
     cursor: pointer;
   }
   

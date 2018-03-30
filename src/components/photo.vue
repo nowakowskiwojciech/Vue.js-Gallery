@@ -1,10 +1,10 @@
 <template>
   <span>
-          <img @click="toggleImage(true)" class="base" :src="imagePath(url)" :style="{left: elPosX}">
-          <transition  name="fade" >
-            <img  @click="toggleImage(false)" v-if="openedImage" class="big" :src="imagePath(url)">
-          </transition>
-        </span>
+            <img @click="toggleImage(true)" class="base" :src="imagePath(url)" :style="{left: elPosX}">
+            <transition  name="fade" >
+              <img  @click="toggleImage(false)" v-if="openedImage" class="big" :src="imagePath(url)">
+            </transition>
+          </span>
 </template>
 
 <script>
@@ -56,6 +56,6 @@
     top: 0;
     bottom: 0;
     z-index: 1000;
-    cursor:pointer;
+    cursor: pointer;
   }
 </style>

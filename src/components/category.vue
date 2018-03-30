@@ -139,10 +139,9 @@
     margin: 20px;
     cursor: pointer;
   }
-
+  
   .arrow:hover {
-    height:100px;
-
+    height: 100px;
   }
   
   .center-arrow {
