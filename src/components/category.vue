@@ -116,7 +116,7 @@
 <style>
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 2s;
+    transition: opacity 1s;
   }
   
   .fade-enter,
